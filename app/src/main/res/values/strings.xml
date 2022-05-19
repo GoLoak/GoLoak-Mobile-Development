@@ -26,4 +26,5 @@
     <string name="desc_list_sampah">Kami menerima semua %1$s atau sejenis tergolong.</string>
     <string name="point_reward_count">+ %1$d Poin</string>
     <string name="total_point">0 Poin</string>
+    <string name="no_hp">Nomor Telepon</string>
 </resources>
