@@ -5,4 +5,25 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_camera">Camera</string>
     <string name="title_profile">Profile</string>
+    <string name="welcome_text">Halo! Selamat datang di GoLoak</string>
+    <string name="lewati_perkenalan">Lewati Perkenalan</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="kumpulkan_sampah">Kumpulkan Sampah</string>
+    <string name="kumpulkan_sampah_desc">Ayo mulai kumpulkan sampah\nsebanyak-banyaknya</string>
+    <string name="tempat_sampah">Tempat Sampah</string>
+    <string name="tempat_sampah_desc">Taruh semua sampah yang sudah\ndikumpulkan ke tempat sampah\nyang telah disediakan</string>
+    <string name="jual_sampah">Jual Sampah</string>
+    <string name="jual_sampah_desc">Ayo mulai jual semua sampah yang\ntelah kamu kumpulkan untuk\nmendapatkan poin sebanyak-banyaknya</string>
+    <string name="memulai">Memulai</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="alamat">Alamat</string>
+    <string name="daftar_sampah">Daftar Sampah</string>
+    <string name="title_list_sampah">Title List Sampah</string>
+    <string name="desc_list_sampah">Kami menerima semua %1$s atau sejenis tergolong.</string>
+    <string name="point_reward_count">+ %1$d Poin</string>
+    <string name="total_point">0 Poin</string>
 </resources>
