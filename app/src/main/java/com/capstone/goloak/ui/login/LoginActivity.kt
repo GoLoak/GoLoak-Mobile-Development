@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -69,11 +71,16 @@ class LoginActivity : AppCompatActivity() {
             val password = binding?.edtPassword?.text.toString().trim()
 
             when{
-                email.isEmpty() ->{
+                email.isEmpty() -> {
                     binding?.edtEmail?.error = "isi dulu"
-                } password.isEmpty() ->{
-                binding?.edtPassword?.error = "isi dulu"
-                } password.length < 6 && password.isNotEmpty() -> {
+                }
+                !isValidEmail(email) -> {
+                    binding?.edtEmail?.error = "Email tidak sah"
+                }
+                password.isEmpty() -> {
+                    binding?.edtPassword?.error = "isi dulu"
+                }
+                password.length < 6 && password.isNotEmpty() -> {
                     binding?.edtPassword?.error = "tidak boleh kurang dari 6 karakter"
                 }
                 else ->{
@@ -94,6 +101,10 @@ class LoginActivity : AppCompatActivity() {
             message,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     private fun isEnableButton(button: Button?, isEnabled: Boolean) {

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -58,6 +60,9 @@ class RegisterActivity : AppCompatActivity() {
                 email.isEmpty() ->{
                     binding?.edtEmail?.error = "Email tidak boleh kosong"
                 }
+                !isValidEmail(email) ->{
+                    binding?.edtEmail?.error = "Email tidak sah"
+                }
                 password.isEmpty() ->{
                     binding?.edtPassword?.error = "Password tidak boleh kosong"
                 }
@@ -85,6 +90,10 @@ class RegisterActivity : AppCompatActivity() {
             message,
             Snackbar.LENGTH_SHORT
         ).show()
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     override fun onDestroy() {
