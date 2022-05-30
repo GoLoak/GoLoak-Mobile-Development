@@ -1,34 +1,41 @@
 package com.capstone.goloak.onboarding
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.goloak.MainActivity
 import com.capstone.goloak.R
+import com.capstone.goloak.ViewModelFactory
 import com.capstone.goloak.databinding.ActivityOnBoardingThreeBinding
+import com.capstone.goloak.datastore.SettingPreferences
 import com.capstone.goloak.ui.login.LoginActivity
 
-class OnBoardingThreeActivity : AppCompatActivity(), View.OnClickListener {
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
+class OnBoardingThreeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingThreeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val pref = SettingPreferences.getInstance(dataStore)
+        val obViewModel = ViewModelProvider(this, ViewModelFactory(pref))[OnBoardingViewModel::class.java]
+
         binding = ActivityOnBoardingThreeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
-            btnStart.setOnClickListener(this@OnBoardingThreeActivity)
-        }
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btn_start -> {
-                val intent = Intent(this, LoginActivity::class.java)
+            btnStart.setOnClickListener {
+                obViewModel.saveSesi(true)
+                val intent = Intent(this@OnBoardingThreeActivity, LoginActivity::class.java)
                 startActivity(intent)
                 finishAffinity()
             }

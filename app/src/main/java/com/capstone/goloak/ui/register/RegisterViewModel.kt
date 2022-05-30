@@ -17,9 +17,12 @@ class RegisterViewModel : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
-    fun register( fullname: String,password: String, email: String,  phone_number: String, address: String){
+    private val _error = MutableLiveData<Boolean>()
+    val error: LiveData<Boolean> = _error
+
+    fun register(fullName: String, password: String, email: String,  phoneNumber: String, address: String){
         _loading.value = true
-        val client = ApiConfig.getApiServices().register( fullname, password, email, phone_number, address)
+        val client = ApiConfig.getApiServices().register(fullName, password, email, phoneNumber, address)
 
         client.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
@@ -27,16 +30,20 @@ class RegisterViewModel : ViewModel() {
                 response: Response<RegisterResponse>
             ) {
                 _loading.value = false
-                val responseBoby = response.body()
-                if (response.isSuccessful && responseBoby != null){
-                    _message.value = responseBoby.message!!
-                }else{
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody?.message == "ok"){
+                    _message.value = "Registration successful!"
+                    _error.value = false
+                } else {
+                    _message.value = responseBody?.message.toString()
                     _loading.value = false
-                    Log.e(TAG, "error : ${response.errorBody()}")
+                    _error.value = true
+                    Log.e(TAG, "error : ${responseBody?.message}")
                 }
             }
-
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                _loading.value = false
+                _error.value = true
                 Log.e(TAG, "message : ${t.message.toString()}")
             }
 

@@ -16,7 +16,7 @@ import retrofit2.Response
 class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
 
     //ini untuk datastore
-    fun saveSessi(sesi: Boolean){
+    fun saveSesi(sesi: Boolean){
         viewModelScope.launch {
             pref.saveSesiSetting(sesi)
         }
@@ -35,8 +35,11 @@ class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     val loading : LiveData<Boolean> = _loading
 
-    private val _data = MutableLiveData<String>()
-    val data : LiveData<String> = _data
+    private val _data = MutableLiveData<String?>()
+    val data : LiveData<String?> = _data
+
+    private val _message = MutableLiveData<String>()
+    val message: LiveData<String> = _message
 
     fun login(email: String, password: String){
         _loading.value = true
@@ -45,15 +48,21 @@ class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 _loading.value = false
                 val responseBody = response.body()
-                if (response.isSuccessful && responseBody != null){
-                    _data.value = responseBody.token!!
+                if (response.isSuccessful && responseBody?.message == "ok"){
+                    _data.value = responseBody.token
+                    _message.value = "Login successful!"
+                    _saveUser.value = true
                 }else{
+                    _message.value = "Make sure the email and password is correct."
+                    _saveUser.value = false
                     _loading.value = false
-                    Log.e(TAG, "message : ${response.errorBody().toString()}")
+                    Log.e(TAG, "message : ${responseBody?.message}")
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _saveUser.value = false
+                _loading.value = false
                 Log.e(TAG, "error : ${t.message.toString()}")
             }
         })
