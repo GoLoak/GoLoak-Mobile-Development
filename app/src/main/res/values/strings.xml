@@ -27,4 +27,9 @@
     <string name="point_reward_count">+ %1$d Poin</string>
     <string name="total_point">0 Poin</string>
     <string name="no_hp">Nomor Telepon</string>
+    <string name="title_history">Title History</string>
+    <string name="waiting_driver">Waiting Driver</string>
+    <string name="date">17.30, 20 April 202</string>
+    <string name="history">History</string>
+    <string name="point_history">Point History</string>
 </resources>

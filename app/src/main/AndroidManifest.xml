@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoLoak">
         <activity
+            android:name=".ui.point.PointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.PointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
