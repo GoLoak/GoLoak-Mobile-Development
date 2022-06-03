@@ -8,7 +8,8 @@ import com.capstone.goloak.model.HomeListTrash
 
 @Database(
     entities = [HomeListTrash::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class HomeListTrashDatabase : RoomDatabase() {
     abstract fun homeListTrashDao(): HomeListTrashDao
@@ -24,7 +25,6 @@ abstract class HomeListTrashDatabase : RoomDatabase() {
                     context.applicationContext,
                     HomeListTrashDatabase::class.java, "list_trash_database"
                 )
-                    .fallbackToDestructiveMigration()
                     .build()
                     .also { INSTANCE = it }
             }
