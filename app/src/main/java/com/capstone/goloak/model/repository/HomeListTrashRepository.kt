@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import com.capstone.goloak.database.HomeListTrashDao
 import com.capstone.goloak.database.HomeListTrashDatabase
-import com.capstone.goloak.model.network.HomeListTrash
+import com.capstone.goloak.model.HomeListTrash
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

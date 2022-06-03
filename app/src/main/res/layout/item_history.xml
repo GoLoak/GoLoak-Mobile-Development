@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view_history"
     android:layout_width="match_parent"
     android:layout_height="120dp"
@@ -14,13 +13,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/photo2"
+            android:id="@+id/photo"
             android:layout_width="100dp"
             android:layout_height="120dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bottle_trash" />
+            app:srcCompat="@drawable/bottle_trash"
+            android:contentDescription="@string/photo" />
 
         <TextView
             android:id="@+id/title_history"
@@ -34,11 +34,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/photo2"
+            app:layout_constraintStart_toEndOf="@+id/photo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/desc_history"
+            android:id="@+id/status_history"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -47,7 +47,7 @@
             android:text="@string/waiting_driver"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.419"
-            app:layout_constraintStart_toEndOf="@+id/photo2"
+            app:layout_constraintStart_toEndOf="@+id/photo"
             app:layout_constraintTop_toBottomOf="@+id/title_history" />
 
         <TextView
@@ -61,8 +61,8 @@
             android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.419"
-            app:layout_constraintStart_toEndOf="@+id/photo2"
-            app:layout_constraintTop_toBottomOf="@+id/desc_history" />
+            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintTop_toBottomOf="@+id/status_history" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

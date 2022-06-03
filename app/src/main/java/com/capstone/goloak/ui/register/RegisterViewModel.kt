@@ -31,12 +31,11 @@ class RegisterViewModel : ViewModel() {
             ) {
                 _loading.value = false
                 val responseBody = response.body()
-                if (response.isSuccessful && responseBody?.message == "ok"){
+                if (response.isSuccessful && responseBody?.message == "success"){
                     _message.value = "Registration successful!"
                     _error.value = false
                 } else {
                     _message.value = responseBody?.message.toString()
-                    _loading.value = false
                     _error.value = true
                     Log.e(TAG, "error : ${responseBody?.message}")
                 }

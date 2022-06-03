@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
@@ -51,8 +52,11 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.saveUser.observe(this) {
             if (it) {
                 loginViewModel.saveSesi(it)
-                loginViewModel.data.observe(this) { token ->
+                loginViewModel.dataToken.observe(this) { token ->
                     loginViewModel.saveToken(token.toString())
+                }
+                loginViewModel.dataId.observe(this) { id ->
+                    loginViewModel.saveIdUser(id.toString())
                 }
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra(MainActivity.EXTRA_RESULT, loginViewModel.message.value)

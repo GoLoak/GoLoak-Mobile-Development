@@ -12,4 +12,10 @@ class MainViewModel (private val pref : SettingPreferences) : ViewModel() {
     fun getSesi(): LiveData<Boolean> {
         return pref.getSesiSetting().asLiveData()
     }
+
+    fun logout() {
+        viewModelScope.launch {
+            pref.logout()
+        }
+    }
 }

@@ -1,18 +1,13 @@
 package com.capstone.goloak.model.response
 
+import com.capstone.goloak.model.HomeListHistory
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(
 
+data class HistoryResponse(
     @field:SerializedName("message")
     val message: String? = null,
 
-    @field:SerializedName("id")
-    val id: String? = null,
-
-    @field:SerializedName("token")
-    val token: String? = null
+    @field:SerializedName("listSelling")
+    val listHistory: ArrayList<HomeListHistory>
 )
-
-
-

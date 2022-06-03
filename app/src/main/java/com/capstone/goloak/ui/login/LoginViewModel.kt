@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
+class LoginViewModel(private val pref : SettingPreferences) : ViewModel() {
 
     //ini untuk datastore
     fun saveSesi(sesi: Boolean){
@@ -28,6 +28,11 @@ class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
         }
     }
 
+    fun saveIdUser(idUser: String){
+        viewModelScope.launch {
+            pref.saveIdUserSetting(idUser)
+        }
+    }
 
     private val _saveUser = MutableLiveData<Boolean>()
     val saveUser : LiveData<Boolean> = _saveUser
@@ -35,8 +40,11 @@ class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     val loading : LiveData<Boolean> = _loading
 
-    private val _data = MutableLiveData<String?>()
-    val data : LiveData<String?> = _data
+    private val _dataToken = MutableLiveData<String?>()
+    val dataToken : LiveData<String?> = _dataToken
+
+    private val _dataId = MutableLiveData<String?>()
+    val dataId : LiveData<String?> = _dataId
 
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
@@ -48,14 +56,14 @@ class LoginViewModel (private val pref : SettingPreferences) : ViewModel() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 _loading.value = false
                 val responseBody = response.body()
-                if (response.isSuccessful && responseBody?.message == "ok"){
-                    _data.value = responseBody.token
+                if (response.isSuccessful && responseBody?.message == "success"){
+                    _dataToken.value = responseBody.token
+                    _dataId.value = responseBody.id
                     _message.value = "Login successful!"
                     _saveUser.value = true
                 }else{
                     _message.value = "Make sure the email and password is correct."
                     _saveUser.value = false
-                    _loading.value = false
                     Log.e(TAG, "message : ${responseBody?.message}")
                 }
             }

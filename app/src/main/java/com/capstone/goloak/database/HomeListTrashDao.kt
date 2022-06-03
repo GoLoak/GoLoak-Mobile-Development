@@ -2,7 +2,7 @@ package com.capstone.goloak.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.capstone.goloak.model.network.HomeListTrash
+import com.capstone.goloak.model.HomeListTrash
 
 @Dao
 interface HomeListTrashDao {

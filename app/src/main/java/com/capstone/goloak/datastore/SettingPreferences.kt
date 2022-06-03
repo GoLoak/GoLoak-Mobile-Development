@@ -13,6 +13,7 @@ class SettingPreferences private constructor(private val dataStore: DataStore<Pr
     private val sesiKey = booleanPreferencesKey("sesi_setting")
     private val sesiObKey = booleanPreferencesKey("sesi_ob_setting")
     private val tokenKey = stringPreferencesKey("token_setting")
+    private val idKey = stringPreferencesKey("id_setting")
 
     suspend fun saveSesiSetting(sesi: Boolean) {
         dataStore.edit { preferences ->
@@ -32,6 +33,12 @@ class SettingPreferences private constructor(private val dataStore: DataStore<Pr
         }
     }
 
+    fun getIdUserSetting(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[idKey] ?: ""
+        }
+    }
+
     fun getSesiObSetting(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
             preferences[sesiObKey] ?: false
@@ -41,6 +48,20 @@ class SettingPreferences private constructor(private val dataStore: DataStore<Pr
     suspend fun saveTokenSetting(token: String) {
         dataStore.edit { preferences ->
             preferences[tokenKey] = token
+        }
+    }
+
+    suspend fun saveIdUserSetting(idUser: String) {
+        dataStore.edit { preferences ->
+            preferences[idKey] = idUser
+        }
+    }
+
+    suspend fun logout() {
+        dataStore.edit { preferences ->
+            preferences[sesiKey] = false
+            preferences[tokenKey] = ""
+            preferences[idKey] = ""
         }
     }
 
