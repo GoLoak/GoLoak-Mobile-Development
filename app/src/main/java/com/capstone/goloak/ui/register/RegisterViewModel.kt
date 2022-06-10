@@ -32,7 +32,7 @@ class RegisterViewModel : ViewModel() {
                 _loading.value = false
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody?.message == "success"){
-                    _message.value = "Registration successful!"
+                    _message.value = "Berhasil melakukan registrasi!"
                     _error.value = false
                 } else {
                     _message.value = responseBody?.message.toString()

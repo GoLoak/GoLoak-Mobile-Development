@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.goloak.datastore.SettingPreferences
 import com.capstone.goloak.onboarding.OnBoardingViewModel
+import com.capstone.goloak.ui.camera.CameraViewModel
 import com.capstone.goloak.ui.history.HistoryViewModel
 import com.capstone.goloak.ui.home.HomeViewModel
 import com.capstone.goloak.ui.login.LoginViewModel
@@ -33,6 +34,9 @@ class ViewModelFactory (private val pref: SettingPreferences) : ViewModelProvide
             }
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
                 HistoryViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(CameraViewModel::class.java) -> {
+                CameraViewModel(pref) as T
             }
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(pref) as T

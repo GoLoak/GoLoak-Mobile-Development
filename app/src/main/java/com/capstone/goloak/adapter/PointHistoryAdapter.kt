@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.goloak.R
-import com.capstone.goloak.databinding.ItemHistoryBinding
 import com.capstone.goloak.databinding.ItemPointHistoryBinding
+import com.capstone.goloak.helper.withDateFormat
 import com.capstone.goloak.helper.withNumberingFormat
 import com.capstone.goloak.model.ProfileListPointHistory
 
@@ -28,7 +28,7 @@ class PointHistoryAdapter : ListAdapter<ProfileListPointHistory, PointHistoryAda
             binding.apply {
                 titleTrash.text = data.status
                 countRewardPoint.text = itemView.context.getString(R.string.point_minus_count, data.pointUsed.toString().withNumberingFormat())
-                date.text = data.startDate
+                date.text = itemView.context.getString(R.string.date, data.startDate.withDateFormat())
             }
         }
     }

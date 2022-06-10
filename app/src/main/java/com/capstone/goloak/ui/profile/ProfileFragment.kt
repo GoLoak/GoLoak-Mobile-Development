@@ -14,7 +14,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.goloak.MainViewModel
-import com.capstone.goloak.R
 import com.capstone.goloak.ViewModelFactory
 import com.capstone.goloak.databinding.FragmentProfileBinding
 import com.capstone.goloak.datastore.SettingPreferences

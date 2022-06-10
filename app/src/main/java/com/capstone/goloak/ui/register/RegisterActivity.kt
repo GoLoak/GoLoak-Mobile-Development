@@ -10,7 +10,6 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.goloak.R
@@ -59,26 +58,34 @@ class RegisterActivity : AppCompatActivity() {
             when{
                 email.isEmpty() ->{
                     binding?.edtEmail?.error = "Email tidak boleh kosong"
+                    binding?.edtEmail?.requestFocus()
                 }
                 !isValidEmail(email) ->{
                     binding?.edtEmail?.error = "Email tidak sah"
+                    binding?.edtEmail?.requestFocus()
                 }
                 password.isEmpty() ->{
                     binding?.edtPassword?.error = "Password tidak boleh kosong"
+                    binding?.edtPassword?.requestFocus()
+                }
+                password.length < 6 && password.isNotEmpty() -> {
+                    binding?.edtPassword?.error = "Password tidak boleh kurang dari 6 karakter"
+                    binding?.edtPassword?.requestFocus()
                 }
                 fullName.isEmpty() ->{
                     binding?.edtFullName?.error = "Nama lengkap tidak boleh kosong"
+                    binding?.edtFullName?.requestFocus()
                 }
                 address.isEmpty() ->{
                     binding?.edtAddress?.error = "Alamat tidak boleh kosong"
+                    binding?.edtAddress?.requestFocus()
                 }
                 phoneNumber.isEmpty() ->{
                     binding?.edtNumberphone?.error = "Nomor telepon tidak boleh kosong"
+                    binding?.edtNumberphone?.requestFocus()
                 }
-                password.length < 6 && password.isNotEmpty() ->{
-                    binding?.edtPassword?.error = "Password tidak boleh kurang dari 6 karakter"
-                } else -> {
-                registerViewModel.register(fullName, password, email, phoneNumber, address)
+                else -> {
+                    registerViewModel.register(fullName, password, email, phoneNumber, address)
                 }
             }
         }

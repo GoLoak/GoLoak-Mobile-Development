@@ -9,7 +9,6 @@ import com.capstone.goloak.datastore.SettingPreferences
 import com.capstone.goloak.model.network.ApiConfig
 import com.capstone.goloak.model.HomeListTrash
 import com.capstone.goloak.model.response.HomeResponse
-import com.capstone.goloak.ui.login.LoginViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

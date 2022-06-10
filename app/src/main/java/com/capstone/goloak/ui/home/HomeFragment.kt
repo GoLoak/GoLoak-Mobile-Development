@@ -42,12 +42,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-//        val pref = SettingPreferences.getInstance(requireActivity().dataStore)
-//        val homeViewModel = ViewModelProvider(this, ViewModelFactory(pref))[HomeViewModel::class.java]
+
         showRecyclerView()
 
         binding.imgHistory.setOnClickListener {

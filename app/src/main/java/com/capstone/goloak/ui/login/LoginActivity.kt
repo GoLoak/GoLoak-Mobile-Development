@@ -6,7 +6,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
@@ -77,15 +76,19 @@ class LoginActivity : AppCompatActivity() {
             when{
                 email.isEmpty() -> {
                     binding?.edtEmail?.error = "isi dulu"
+                    binding?.edtEmail?.requestFocus()
                 }
                 !isValidEmail(email) -> {
                     binding?.edtEmail?.error = "Email tidak sah"
+                    binding?.edtEmail?.requestFocus()
                 }
                 password.isEmpty() -> {
                     binding?.edtPassword?.error = "isi dulu"
+                    binding?.edtPassword?.requestFocus()
                 }
                 password.length < 6 && password.isNotEmpty() -> {
                     binding?.edtPassword?.error = "tidak boleh kurang dari 6 karakter"
+                    binding?.edtPassword?.requestFocus()
                 }
                 else ->{
                      loginViewModel.login(email, password)

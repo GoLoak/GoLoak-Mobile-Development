@@ -1,6 +1,5 @@
 package com.capstone.goloak.helper
 
-import java.text.DateFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -10,7 +9,8 @@ fun String.withNumberingFormat(): String {
 }
 
 fun String.withDateFormat(): String {
-    val format = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-    val date = format.parse(this) as Date
-    return DateFormat.getDateInstance(DateFormat.FULL).format(date)
+    val getFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
+    val outputFormat = SimpleDateFormat("HH:mm:ss, dd MMMM yyyy", Locale("in", "ID"))
+    val date = getFormat.parse(this) as Date
+    return outputFormat.format(date)
 }

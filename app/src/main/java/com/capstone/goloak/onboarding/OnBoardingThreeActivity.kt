@@ -1,18 +1,13 @@
 package com.capstone.goloak.onboarding
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.goloak.MainActivity
-import com.capstone.goloak.R
 import com.capstone.goloak.ViewModelFactory
 import com.capstone.goloak.databinding.ActivityOnBoardingThreeBinding
 import com.capstone.goloak.datastore.SettingPreferences

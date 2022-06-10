@@ -1,10 +1,22 @@
 package com.capstone.goloak.model.network
 
 import com.capstone.goloak.model.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
+    @Multipart
+    @POST("api/selling/{id}")
+    fun postSellTrash(
+        @Path("id") id: String,
+        @Part("total_trash") totalTrash: Int,
+        @Part("total_point") totalPoint: Int,
+        @Part("nameTrash") nameTrash: RequestBody,
+        @Part file: MultipartBody.Part
+    ) : Call<SellingPostResponse>
+
     @FormUrlEncoded
     @POST("auth/signup")
     fun register(
@@ -12,7 +24,7 @@ interface ApiService {
         @Field("password") password: String,
         @Field("email") email: String,
         @Field("phone_number") phoneNumber : String,
-        @Field("address") address: String,
+        @Field("address") address: String
     ) : Call<RegisterResponse>
 
     @FormUrlEncoded

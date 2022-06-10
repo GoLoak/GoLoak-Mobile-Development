@@ -9,10 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.capstone.goloak.R
 import com.capstone.goloak.databinding.ItemHistoryBinding
-import com.capstone.goloak.databinding.ItemListTrashBinding
-import com.capstone.goloak.helper.withNumberingFormat
+import com.capstone.goloak.helper.withDateFormat
 import com.capstone.goloak.model.HomeListHistory
-import com.capstone.goloak.model.HomeListTrash
 
 class HistoryAdapter : ListAdapter<HomeListHistory, HistoryAdapter.ListViewHolder>(HistoryDiffCallback()) {
 
@@ -36,7 +34,7 @@ class HistoryAdapter : ListAdapter<HomeListHistory, HistoryAdapter.ListViewHolde
                     .into(photo)
                 titleHistory.text = data.nameTrash
                 statusHistory.text = data.status
-                date.text = data.createAt
+                date.text = itemView.context.getString(R.string.date, data.createAt.withDateFormat())
             }
         }
     }

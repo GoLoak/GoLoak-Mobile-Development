@@ -14,8 +14,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginViewModel(private val pref : SettingPreferences) : ViewModel() {
-
-    //ini untuk datastore
     fun saveSesi(sesi: Boolean){
         viewModelScope.launch {
             pref.saveSesiSetting(sesi)
@@ -59,10 +57,10 @@ class LoginViewModel(private val pref : SettingPreferences) : ViewModel() {
                 if (response.isSuccessful && responseBody?.message == "success"){
                     _dataToken.value = responseBody.token
                     _dataId.value = responseBody.id
-                    _message.value = "Login successful!"
+                    _message.value = "Berhasil login!"
                     _saveUser.value = true
                 }else{
-                    _message.value = "Make sure the email and password is correct."
+                    _message.value = "Email/password tidak terdaftar."
                     _saveUser.value = false
                     Log.e(TAG, "message : ${responseBody?.message}")
                 }

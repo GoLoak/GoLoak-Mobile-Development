@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import com.capstone.goloak.R
-import com.capstone.goloak.databinding.ActivityOnBoardingOneBinding
 import com.capstone.goloak.databinding.ActivityOnBoardingTwoBinding
-import com.capstone.goloak.ui.login.LoginActivity
 
 class OnBoardingTwoActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityOnBoardingTwoBinding
